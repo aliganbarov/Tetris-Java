@@ -8,6 +8,5 @@ public class Menu {
         Board board = new Board();
 
 
-
     }
 }

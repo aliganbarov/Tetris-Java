@@ -8,7 +8,7 @@ import java.awt.*;
  * Created by AliPC on 18-Dec-16.
  */
 public class OBlock extends Block {
-    private double xDimensions[] = {0, 20, 0, 20};
+    private double xDimensions[] = {80, 100, 80, 100};
     private double yDimensions[] = {0, 0, 20, 20};
 
     private Color[] color;
@@ -18,6 +18,8 @@ public class OBlock extends Block {
     public OBlock() {
         isRotated = false;
         color = new Color[4];
+        numberOfSquares = 4;
+        atRotateStage = 1;
 
         color[0] = new Color(50, 50, 50);
         color[1] = new Color(40, 60, 60);
@@ -89,16 +91,6 @@ public class OBlock extends Block {
     }
 
     @Override
-    public void setxDimensions(double x1, double x2, double x3, double x4, double x5) {
-
-    }
-
-    @Override
-    public void setyDimensions(double y1, double y2, double y3, double y4, double y5) {
-
-    }
-
-    @Override
     public void rotateToStage1() {
 
     }
@@ -120,8 +112,10 @@ public class OBlock extends Block {
 
     @Override
     public boolean reachedBottom() {
-        if (yDimensions[2] == height - blockSize) {
-            return true;
+        for (int i = 0; i < numberOfSquares; i++ ){
+            if (yDimensions[i] == height - blockSize) {
+                return true;
+            }
         }
         return false;
     }
@@ -141,11 +135,6 @@ public class OBlock extends Block {
     @Override
     public Color[] getColor() {
         return color;
-    }
-
-    @Override
-    public int getType() {
-        return 1;
     }
 
     @Override

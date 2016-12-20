@@ -15,16 +15,6 @@ public class EmptyBlock extends Block {
     }
 
     @Override
-    public void setxDimensions(double x1, double x2, double x3, double x4, double x5) {
-
-    }
-
-    @Override
-    public void setyDimensions(double y1, double y2, double y3, double y4, double y5) {
-
-    }
-
-    @Override
     public boolean reachedBottom() {
         return false;
     }
@@ -82,10 +72,6 @@ public class EmptyBlock extends Block {
     @Override
     public Color[] getColor() {
         return null;
-    }
-
-    public int getType() {
-        return 0;
     }
 
     @Override

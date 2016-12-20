@@ -8,7 +8,7 @@ import java.awt.*;
  * Created by AliPC on 18-Dec-16.
  */
 public class IBlock extends Block {
-    private double xDimensions[] = {0, 0, 0, 0};
+    private double xDimensions[] = {80, 80, 80, 80};
     private double yDimensions[] = {0, 20, 40, 60};
 
     private Color[] color;
@@ -101,7 +101,7 @@ public class IBlock extends Block {
 
     @Override
     public void rotateRight() {
-        System.out.println("Rotate from " + atRotateStage + " to " + (atRotateStage + 1));
+        //System.out.println("Rotate from " + atRotateStage + " to " + (atRotateStage + 1));
         if (atRotateStage == 1) {
             rotateToStage2();
         }
@@ -119,8 +119,7 @@ public class IBlock extends Block {
 
     @Override
     public void rotateLeft() {
-        System.out.println("Rotate left");
-        System.out.println("Rotate from " + atRotateStage + " to " + (atRotateStage - 1));
+        //System.out.println("Rotate from " + atRotateStage + " to " + (atRotateStage - 1));
         if (atRotateStage == 1) {
             rotateToStage4();
         }
@@ -201,7 +200,7 @@ public class IBlock extends Block {
     public void rotateToStage3() {
         //right rotation
         if (atRotateStage == 2) {
-            System.out.println("Rotate from " + atRotateStage + " to " + (atRotateStage + 1));
+            //System.out.println("Rotate from " + atRotateStage + " to " + (atRotateStage + 1));
             setxDimensions(xDimensions[0] - blockSize * 2, xDimensions[1] - blockSize,
                     xDimensions[2], xDimensions[3] + blockSize);
             setyDimensions(yDimensions[0] + blockSize * 2, yDimensions[1] + blockSize,
@@ -256,11 +255,11 @@ public class IBlock extends Block {
     public boolean isOutOfBorder() {
         for (int i = 0; i < numberOfSquares; i++) {
             if (xDimensions[i] < 0 || xDimensions[i] > (width - blockSize)) {
-                System.out.println("Out of border");
+                //System.out.println("I Block x is out of border");
                 return true;
             }
             if (yDimensions[i] < 0 || yDimensions[i] > (height - blockSize)) {
-                System.out.println("Out of border");
+                //System.out.println("I Block y is out of border");
                 return true;
             }
         }
@@ -268,8 +267,10 @@ public class IBlock extends Block {
     }
 
     public boolean reachedBottom() {
-        if (yDimensions[3] == height - blockSize) {
-            return true;
+        for (int i = 0; i < numberOfSquares; i++ ){
+            if (yDimensions[i] == height - blockSize) {
+                return true;
+            }
         }
         return false;
     }
@@ -278,23 +279,9 @@ public class IBlock extends Block {
         return color;
     }
 
-    public int getType() {
-        return 1;
-    }
-
     @Override
     public int getNumberOfSquares() {
         return 4;
-    }
-
-    @Override
-    public void setxDimensions(double x1, double x2, double x3, double x4, double x5) {
-
-    }
-
-    @Override
-    public void setyDimensions(double y1, double y2, double y3, double y4, double y5) {
-
     }
 
 

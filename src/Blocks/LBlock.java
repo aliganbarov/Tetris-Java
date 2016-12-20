@@ -8,7 +8,7 @@ import java.awt.*;
  * Created by AliPC on 18-Dec-16.
  */
 public class LBlock extends Block {
-    private double xDimensions[] = {0, 0, 0, 20};
+    private double xDimensions[] = {80, 80, 80, 100};
     private double yDimensions[] = {0, 20, 40, 40};
 
     private Color[] color;
@@ -18,6 +18,8 @@ public class LBlock extends Block {
     public LBlock() {
         isRotated = false;
         color = new Color[4];
+        numberOfSquares = 4;
+        atRotateStage = 1;
         color[0] = new Color(200, 244, 66);
         color[1] = new Color(190, 240, 60);
         color[2] = new Color(180, 220, 50);
@@ -79,32 +81,144 @@ public class LBlock extends Block {
 
     @Override
     public void rotateRight() {
-
+        //System.out.println("Rotate from " + atRotateStage + " to " + (atRotateStage + 1));
+        if (atRotateStage == 1) {
+            rotateToStage2();
+        }
+        else if (atRotateStage == 2) {
+            rotateToStage3();
+        }
+        else if (atRotateStage == 3) {
+            rotateToStage4();
+        }
+        else if (atRotateStage == 4){
+            rotateToStage1();
+        }
     }
 
     @Override
     public void rotateLeft() {
-
+        //System.out.println("Rotate from " + atRotateStage + " to " + (atRotateStage - 1));
+        if (atRotateStage == 1) {
+            rotateToStage4();
+        }
+        else if (atRotateStage == 2) {
+            rotateToStage1();
+        }
+        else if (atRotateStage == 3) {
+            rotateToStage2();
+        }
+        else if (atRotateStage == 4) {
+            rotateToStage3();
+        }
     }
 
     @Override
     public void rotateToStage1() {
+        //right rotation from 4 to 1
+        if (atRotateStage == 4) {
+            setxDimensions(xDimensions[0], xDimensions[1] - blockSize,
+                    xDimensions[2] - blockSize * 2, xDimensions[3] - blockSize);
+            setyDimensions(yDimensions[0] - blockSize * 2, yDimensions[1] - blockSize,
+                    yDimensions[2], yDimensions[3] + blockSize);
+            atRotateStage = 1;
+            if (isOutOfBorder()) {
+                rotateLeft();
+            }
+        }
 
+        //left rotation from 2 to 1
+        if (atRotateStage == 2) {
+            setxDimensions(xDimensions[0] - blockSize * 2, xDimensions[1] - blockSize,
+                    xDimensions[2], xDimensions[3] + blockSize);
+            setyDimensions(yDimensions[0], yDimensions[1] + blockSize,
+                    yDimensions[2] + blockSize * 2, yDimensions[3] + blockSize);
+            atRotateStage = 1;
+            if (isOutOfBorder()) {
+                rotateRight();
+            }
+        }
     }
 
     @Override
     public void rotateToStage2() {
+        //right rotation from 1 to 2
+        if (atRotateStage == 1) {
+            setxDimensions(xDimensions[0] + blockSize * 2, xDimensions[1] + blockSize,
+                    xDimensions[2], xDimensions[3] - blockSize);
+            setyDimensions(yDimensions[0], yDimensions[1] - blockSize,
+                    yDimensions[2] - blockSize * 2, yDimensions[3] - blockSize);
+            atRotateStage = 2;
+            if(isOutOfBorder()) {
+                rotateLeft();
+            }
+        }
 
+        //left rotation from 3 to 2
+        if (atRotateStage == 3) {
+            setxDimensions(xDimensions[0], xDimensions[1] - blockSize,
+                    xDimensions[2] - blockSize * 2, xDimensions[3] - blockSize);
+            setyDimensions(yDimensions[0] - blockSize * 2, yDimensions[1] - blockSize,
+                    yDimensions[2], yDimensions[3] + blockSize);
+            atRotateStage = 2;
+            if (isOutOfBorder()) {
+                rotateRight();
+            }
+        }
     }
 
     @Override
     public void rotateToStage3() {
+        //right rotation from 2 to 3
+        if (atRotateStage == 2) {
+            setxDimensions(xDimensions[0], xDimensions[1] + blockSize,
+                    xDimensions[2] + blockSize * 2, xDimensions[3] + blockSize);
+            setyDimensions(yDimensions[0] + blockSize * 2, yDimensions[1] + blockSize,
+                    yDimensions[2], yDimensions[3] - blockSize);
+            atRotateStage = 3;
+            if(isOutOfBorder()) {
+                rotateLeft();
+            }
+        }
 
+        //left rotation from 4 to 3
+        if (atRotateStage == 4) {
+            setxDimensions(xDimensions[0] + blockSize * 2, xDimensions[1] + blockSize,
+                    xDimensions[2], xDimensions[3] - blockSize);
+            setyDimensions(yDimensions[0], yDimensions[1] - blockSize,
+                    yDimensions[2] - blockSize * 2, yDimensions[3] - blockSize);
+            atRotateStage = 3;
+            if (isOutOfBorder()) {
+                rotateRight();
+            }
+        }
     }
 
     @Override
     public void rotateToStage4() {
+        //right rotation from 3 to 4
+        if (atRotateStage == 3){
+            setxDimensions(xDimensions[0] - blockSize * 2, xDimensions[1] - blockSize,
+                    xDimensions[2], xDimensions[3] + blockSize);
+            setyDimensions(yDimensions[0], yDimensions[1] + blockSize,
+                    yDimensions[2] + blockSize * 2, yDimensions[3] + blockSize);
+            atRotateStage = 4;
+            if(isOutOfBorder()) {
+                rotateLeft();
+            }
+        }
 
+        //left rotation from 1 to 4
+        if (atRotateStage == 1) {
+            setxDimensions(xDimensions[0], xDimensions[1] + blockSize,
+                    xDimensions[2] + blockSize * 2, xDimensions[3] + blockSize);
+            setyDimensions(yDimensions[0] + blockSize * 2, yDimensions[1] + blockSize,
+                    yDimensions[2], yDimensions[3] - blockSize);
+            atRotateStage = 4;
+            if (isOutOfBorder()) {
+                rotateRight();
+            }
+        }
     }
 
     @Override
@@ -121,28 +235,16 @@ public class LBlock extends Block {
     }
 
     public boolean reachedBottom() {
-        if (yDimensions[3] == height - blockSize) {
-            return true;
+        for (int i = 0; i < numberOfSquares; i++ ){
+            if (yDimensions[i] == height - blockSize) {
+                return true;
+            }
         }
         return false;
     }
 
     public Color[] getColor() {
         return color;
-    }
-
-    public int getType() {
-        return 1;
-    }
-
-    @Override
-    public void setxDimensions(double x1, double x2, double x3, double x4, double x5) {
-
-    }
-
-    @Override
-    public void setyDimensions(double y1, double y2, double y3, double y4, double y5) {
-
     }
 
     @Override

@@ -1,6 +1,7 @@
 import Blocks.*;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -47,6 +48,9 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
                 existingBlocks[i][j] = new EmptyBlock();
             }
         }
+        //setBorder(BorderFactory.createLineBorder(Color.black));
+        Border border = BorderFactory.createLineBorder(new Color(0, 0, 0));
+        setBorder(border);
     }
 
     public void paintComponent(Graphics g) {
@@ -64,52 +68,12 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
             g2.fill(new Rectangle2D.Double(xDimensions[k], yDimensions[k], 20, 20));
         }
 
-        /*
-        //for L, I Blocks
-        g2.setColor(color[0]);
-        g2.fill(new Rectangle2D.Double(xDimensions[0], yDimensions[0], 20, 20));
-        g2.setColor(color[1]);
-        g2.fill(new Rectangle2D.Double(xDimensions[1], yDimensions[1], 20, 20));
-        g2.setColor(color[2]);
-        g2.fill(new Rectangle2D.Double(xDimensions[2], yDimensions[2], 20, 20));
-        g2.setColor(color[3]);
-        g2.fill(new Rectangle2D.Double(xDimensions[3], yDimensions[3], 20, 20));
-
-        //if type 2 add extra block
-        if (newBlock.getType() == 2) {
-            g2.setColor(color[4]);
-            g2.fill(new Rectangle2D.Double(xDimensions[4], yDimensions[4], 20, 20));
-        }
-        */
-
         //painting existing blocks
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
                 if (existingBlocks[i][j].getClass() != (new EmptyBlock()).getClass()) {
-                    xDimensions = existingBlocks[i][j].getxDimensions();
-                    yDimensions = existingBlocks[i][j].getyDimensions();
-                    color = existingBlocks[i][j].getColor();
-
-                    for (int k = 0; k < existingBlocks[i][j].getNumberOfSquares(); k++) {
-                        g2.setColor(color[k]);
-                        g2.fill(new Rectangle2D.Double(xDimensions[k], yDimensions[k], 20, 20));
-                    }
-                    /*
-                    g2.setColor(color[0]);
-                    g2.fill(new Rectangle2D.Double(xDimensions[0], yDimensions[0], 20, 20));
-                    g2.setColor(color[1]);
-                    g2.fill(new Rectangle2D.Double(xDimensions[1], yDimensions[1], 20, 20));
-                    g2.setColor(color[2]);
-                    g2.fill(new Rectangle2D.Double(xDimensions[2], yDimensions[2], 20, 20));
-                    g2.setColor(color[3]);
-                    g2.fill(new Rectangle2D.Double(xDimensions[3], yDimensions[3], 20, 20));
-
-                    //if type 2 paint extra block 5
-                    if (existingBlocks[i][j].getType() == 2) {
-                        g2.setColor(color[4]);
-                        g2.fill(new Rectangle2D.Double(xDimensions[4], yDimensions[4], 20, 20));
-                    }
-                    */
+                    g2.setColor(existingBlocks[i][j].getColor()[0]);
+                    g2.fill(new Rectangle2D.Double(i * 20, j * 20, 20, 20));
                 }
             }
         }
@@ -118,25 +82,18 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
     public void actionPerformed(ActionEvent e) {
         repaint();
+
         if (newBlock.reachedBottom()) {
             //adding to existing blocks
             saveBlock();
         }
+
         xDimensions = newBlock.getxDimensions();
         yDimensions = newBlock.getyDimensions();
 
         //set new coordinates for type 1
-        if (newBlock.getType() == 1){
-            newBlock.setxDimensions(xDimensions[0] + velX, xDimensions[1] + velX, xDimensions[2] + velX, xDimensions[3] + velX);
-            newBlock.setyDimensions(yDimensions[0] + velY, yDimensions[1] + velY, yDimensions[2] + velY, yDimensions[3] + velY);
-        }
-
-
-        //set new coordinates for type 2
-        if (newBlock.getType() == 2) {
-            newBlock.setxDimensions(xDimensions[0] + velX, xDimensions[1] + velX, xDimensions[2] + velX, xDimensions[3] + velX, xDimensions[4] + velX);
-            newBlock.setyDimensions(yDimensions[0] + velY, yDimensions[1] + velY, yDimensions[2] + velY, yDimensions[3] + velY, yDimensions[4] + velY);
-        }
+        newBlock.setxDimensions(xDimensions[0] + velX, xDimensions[1] + velX, xDimensions[2] + velX, xDimensions[3] + velX);
+        newBlock.setyDimensions(yDimensions[0] + velY, yDimensions[1] + velY, yDimensions[2] + velY, yDimensions[3] + velY);
 
         //check if out of borders
         boolean isOutOfBorder = newBlock.isOutOfBorder();
@@ -149,23 +106,10 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         xDimensions = newBlock.getxDimensions();
         yDimensions = newBlock.getyDimensions();
         boolean isOverlap = checkOverlap();
+
         if (isOverlap) {
-            System.out.println("Overlap for block " + newBlock.getClass() + " moving back");
+            //System.out.println("Overlap for block " + newBlock.getClass() + " moving back");
             MoveBack();
-
-            /*
-            //move the type 1 block back
-            if (newBlock.getType() == 1){
-                newBlock.setxDimensions(xDimensions[0] - velX, xDimensions[1] - velX, xDimensions[2] - velX, xDimensions[3] - velX);
-                newBlock.setyDimensions(yDimensions[0] - velY, yDimensions[1] - velY, yDimensions[2] - velY, yDimensions[3] - velY);
-            }
-
-            //move the type 2 block back
-            if (newBlock.getType() == 2) {
-                newBlock.setxDimensions(xDimensions[0] - velX, xDimensions[1] - velX, xDimensions[2] - velX, xDimensions[3] - velX, xDimensions[4] - velX);
-                newBlock.setyDimensions(yDimensions[0] - velY, yDimensions[1] - velY, yDimensions[2] - velY, yDimensions[3] - velY, yDimensions[4] - velY);
-            }
-            */
 
             /*
             //check bottom block
@@ -188,22 +132,20 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
             yDimensions = newBlock.getyDimensions();
 
             for (int i = 0; i < newBlock.getNumberOfSquares(); i++) {
-                Double xD = xDimensions[i] / 10;
+                Double xD = xDimensions[i] / 20;
                 Double yD = yDimensions[i] / 20;
                 int x = xD.intValue();
                 int y = yD.intValue();
-                System.out.println("x: " + x + ", y: " + y);
+                //System.out.println("x: " + x + ", y: " + y);
                 //check one square lower, if not empty save new block
                 if (existingBlocks[x][y + 1].getClass() != (new EmptyBlock()).getClass()) {
                     saveBlock();
                     break;
                 }
             }
-
-
-
         }
 
+        checkFullRow();
         velX = 0;
         velY = 0;
     }
@@ -225,7 +167,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         for (int i = 0; i < newBlock.getNumberOfSquares(); i++) {
             Double yD = yDimensions[i] / 20;
             int y = yD.intValue();
-            Double xD = xDimensions[i] / 10;
+            Double xD = xDimensions[i] / 20;
             int x = xD.intValue();
             if (maxY == y) {
                 bottomCoords[numbOfBottom++] = x;
@@ -235,17 +177,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
     }
 
     public void MoveBack() {
-        //move the type 1 block back
-        if (newBlock.getType() == 1){
-            newBlock.setxDimensions(xDimensions[0] - velX, xDimensions[1] - velX, xDimensions[2] - velX, xDimensions[3] - velX);
-            newBlock.setyDimensions(yDimensions[0] - velY, yDimensions[1] - velY, yDimensions[2] - velY, yDimensions[3] - velY);
-        }
-
-        //move the type 2 block back
-        if (newBlock.getType() == 2) {
-            newBlock.setxDimensions(xDimensions[0] - velX, xDimensions[1] - velX, xDimensions[2] - velX, xDimensions[3] - velX, xDimensions[4] - velX);
-            newBlock.setyDimensions(yDimensions[0] - velY, yDimensions[1] - velY, yDimensions[2] - velY, yDimensions[3] - velY, yDimensions[4] - velY);
-        }
+        newBlock.setxDimensions(xDimensions[0] - velX, xDimensions[1] - velX, xDimensions[2] - velX, xDimensions[3] - velX);
+        newBlock.setyDimensions(yDimensions[0] - velY, yDimensions[1] - velY, yDimensions[2] - velY, yDimensions[3] - velY);
     }
 
 
@@ -253,12 +186,13 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         xDimensions = newBlock.getxDimensions();
         yDimensions = newBlock.getyDimensions();
         for (int i = 0; i < newBlock.getNumberOfSquares(); i++) {
-            Double xD = xDimensions[i]/10;
+            Double xD = xDimensions[i]/20;
             int x = xD.intValue();
             Double yD = yDimensions[i]/20;
             int y = yD.intValue();
-
+            //System.out.println("existingBlocks[" + x + "][" + y + "] Class: " + existingBlocks[x][y].getClass());
             if (existingBlocks[x][y].getClass() != (new EmptyBlock()).getClass()) {
+                //System.out.println("Overlap, return true");
                 return true;
             }
         }
@@ -269,13 +203,16 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         //add to existing blocks
         xDimensions = newBlock.getxDimensions();
         yDimensions = newBlock.getyDimensions();
+        Color[] color = newBlock.getColor();
         // add new block
-        for(int i = 1; i <= newBlock.getNumberOfSquares(); i++) {
-            Double bottomD = yDimensions[i - 1]/20;
+        for(int i = 0; i < newBlock.getNumberOfSquares(); i++) {
+            Double bottomD = yDimensions[i]/20;
             int yBlock = bottomD.intValue();
-            Double rightD= xDimensions[i - 1]/10;
+            Double rightD= xDimensions[i]/20;
             int xBlock = rightD.intValue();
-            existingBlocks[xBlock][yBlock] = newBlock;
+            //System.out.println("Saved at x: " + xBlock + ", y: " + yBlock);
+            //existingBlocks[xBlock][yBlock] = newBlock;
+            existingBlocks[xBlock][yBlock] = new NotEmptyBlock(color[i]);
         }
 
 
@@ -283,6 +220,42 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
         //create new block
         newBlock = setNewBlock();
+    }
+
+    public void checkFullRow() {
+        boolean rowIsFull = false;
+        for (int j = 0; j < 20; j++ ) {
+            for (int i = 0; i < 10; i++) {
+                //System.out.println("Checking " + i + " " + j + " eB " + existingBlocks[i][j].getClass());
+                if (existingBlocks[i][j].getClass() != (new EmptyBlock()).getClass()) {
+                    rowIsFull = true;
+                }
+                else {
+                    rowIsFull = false;
+                    break;
+                }
+            }
+            if (rowIsFull) {
+                removeRow(j);
+            }
+            rowIsFull = false;
+        }
+    }
+
+    public void removeRow(int i) {
+        for (int j = 0; j < width / 20; j++) {
+            existingBlocks[j][i] = new EmptyBlock();
+        }
+        moveOneLineDown(i);
+    }
+
+    public void moveOneLineDown(int emptyRow) {
+        System.out.println("Empty Row: " + emptyRow);
+        for (int j = emptyRow; j > 0; j--){
+            for (int i = 0; i < 20; i++) {
+                existingBlocks[i][j] = existingBlocks[i][j - 1];
+            }
+        }
     }
 
     public void up() {
@@ -297,18 +270,21 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
     public void left() {
         velX = -20;
-        velY = 0;
+        //velY = 0;
     }
 
     public void right() {
         velX = 20;
-        velY = 0;
+        //velY = 0;
     }
 
     public Block setNewBlock() {
         Random r = new Random();
-        int op = r.nextInt(1);
-        System.out.println(op);
+        int op = r.nextInt(7);
+        //System.out.println(op);
+        //return new ZBlock();
+
+        ///*
         switch(op) {
             case 0:
                 return new IBlock();
@@ -327,6 +303,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         }
 
         return new LBlock();
+        //*/
+
     }
 
     public void keyPressed(KeyEvent e) {
@@ -335,14 +313,14 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
             //up();
             newBlock.rotateRight();
             if (checkOverlap()) {
-                System.out.println("Overlap");
+                //System.out.println("Overlap");
                 newBlock.rotateLeft();
             }
         }
         if (code == KeyEvent.VK_W) {
             newBlock.rotateLeft();
             if (checkOverlap()) {
-                System.out.println("Overlap");
+                //System.out.println("Overlap");
                 newBlock.rotateRight();
             }
         }
