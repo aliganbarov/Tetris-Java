@@ -113,7 +113,7 @@ public class OBlock extends Block {
     @Override
     public boolean reachedBottom() {
         for (int i = 0; i < numberOfSquares; i++ ){
-            if (yDimensions[i] == height - blockSize) {
+            if (yDimensions[i] > height - blockSize) {
                 return true;
             }
         }

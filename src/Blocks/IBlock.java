@@ -268,7 +268,7 @@ public class IBlock extends Block {
 
     public boolean reachedBottom() {
         for (int i = 0; i < numberOfSquares; i++ ){
-            if (yDimensions[i] == height - blockSize) {
+            if (yDimensions[i] > height - blockSize) {
                 return true;
             }
         }

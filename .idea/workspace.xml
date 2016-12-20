@@ -2,19 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a2919271-188e-48ee-9eef-1d1a1ff64d75" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Tetris/Blocks/Block.class" afterPath="$PROJECT_DIR$/out/production/Tetris/Blocks/Block.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Tetris/Blocks/EmptyBlock.class" afterPath="$PROJECT_DIR$/out/production/Tetris/Blocks/EmptyBlock.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Tetris/Blocks/IBlock.class" afterPath="$PROJECT_DIR$/out/production/Tetris/Blocks/IBlock.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Tetris/Blocks/JBlock.class" afterPath="$PROJECT_DIR$/out/production/Tetris/Blocks/JBlock.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Tetris/Blocks/LBlock.class" afterPath="$PROJECT_DIR$/out/production/Tetris/Blocks/LBlock.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Tetris/Blocks/OBlock.class" afterPath="$PROJECT_DIR$/out/production/Tetris/Blocks/OBlock.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Tetris/Blocks/SBlock.class" afterPath="$PROJECT_DIR$/out/production/Tetris/Blocks/SBlock.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Tetris/Blocks/TBlock.class" afterPath="$PROJECT_DIR$/out/production/Tetris/Blocks/TBlock.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Tetris/Blocks/ZBlock.class" afterPath="$PROJECT_DIR$/out/production/Tetris/Blocks/ZBlock.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Tetris/GamePanel.class" afterPath="$PROJECT_DIR$/out/production/Tetris/GamePanel.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Blocks/Block.java" afterPath="$PROJECT_DIR$/src/Blocks/Block.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Blocks/EmptyBlock.java" afterPath="$PROJECT_DIR$/src/Blocks/EmptyBlock.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Blocks/IBlock.java" afterPath="$PROJECT_DIR$/src/Blocks/IBlock.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Blocks/JBlock.java" afterPath="$PROJECT_DIR$/src/Blocks/JBlock.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Blocks/LBlock.java" afterPath="$PROJECT_DIR$/src/Blocks/LBlock.java" />
@@ -22,9 +9,7 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Blocks/SBlock.java" afterPath="$PROJECT_DIR$/src/Blocks/SBlock.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Blocks/TBlock.java" afterPath="$PROJECT_DIR$/src/Blocks/TBlock.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Blocks/ZBlock.java" afterPath="$PROJECT_DIR$/src/Blocks/ZBlock.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Board.java" afterPath="$PROJECT_DIR$/src/Board.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GamePanel.java" afterPath="$PROJECT_DIR$/src/GamePanel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Menu.java" afterPath="$PROJECT_DIR$/src/Menu.java" />
     </list>
     <ignored path="Tetris.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -48,8 +33,8 @@
       <file leaf-file-name="GamePanel.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/GamePanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1423">
-              <caret line="322" column="18" selection-start-line="322" selection-start-column="18" selection-end-line="322" selection-end-column="18" />
+            <state relative-caret-position="389">
+              <caret line="297" column="37" selection-start-line="297" selection-start-column="37" selection-end-line="297" selection-end-column="37" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -57,10 +42,20 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="Board.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Board.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="484">
+              <caret line="27" column="43" selection-start-line="27" selection-start-column="43" selection-end-line="27" selection-end-column="43" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="Block.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Blocks/Block.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="257">
+            <state relative-caret-position="264">
               <caret line="12" column="32" selection-start-line="12" selection-start-column="32" selection-end-line="12" selection-end-column="32" />
               <folding>
                 <element signature="e#1050#1051#0" expanded="true" />
@@ -73,12 +68,10 @@
       <file leaf-file-name="IBlock.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Blocks/IBlock.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="10" column="49" selection-start-line="10" selection-start-column="49" selection-end-line="10" selection-end-column="49" />
+            <state relative-caret-position="433">
+              <caret line="270" column="54" selection-start-line="270" selection-start-column="54" selection-end-line="270" selection-end-column="54" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#9218#9219#0" expanded="true" />
-                <element signature="e#9246#9247#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -87,8 +80,8 @@
       <file leaf-file-name="JBlock.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Blocks/JBlock.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
-              <caret line="10" column="53" selection-start-line="10" selection-start-column="53" selection-end-line="10" selection-end-column="53" />
+            <state relative-caret-position="484">
+              <caret line="241" column="32" selection-start-line="241" selection-start-column="32" selection-end-line="241" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -99,8 +92,8 @@
       <file leaf-file-name="LBlock.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Blocks/LBlock.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="10" column="50" selection-start-line="10" selection-start-column="50" selection-end-line="10" selection-end-column="50" />
+            <state relative-caret-position="477">
+              <caret line="238" column="32" selection-start-line="238" selection-start-column="32" selection-end-line="238" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -111,8 +104,8 @@
       <file leaf-file-name="OBlock.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Blocks/OBlock.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="10" column="51" selection-start-line="10" selection-start-column="51" selection-end-line="10" selection-end-column="51" />
+            <state relative-caret-position="279">
+              <caret line="115" column="32" selection-start-line="115" selection-start-column="32" selection-end-line="115" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -123,12 +116,10 @@
       <file leaf-file-name="SBlock.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Blocks/SBlock.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="169">
-              <caret line="10" column="52" selection-start-line="10" selection-start-column="52" selection-end-line="10" selection-end-column="52" />
+            <state relative-caret-position="323">
+              <caret line="157" column="32" selection-start-line="157" selection-start-column="32" selection-end-line="157" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#4352#4353#0" expanded="true" />
-                <element signature="e#4380#4381#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -137,8 +128,8 @@
       <file leaf-file-name="TBlock.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Blocks/TBlock.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="11" column="52" selection-start-line="11" selection-start-column="52" selection-end-line="11" selection-end-column="52" />
+            <state relative-caret-position="440">
+              <caret line="239" column="32" selection-start-line="239" selection-start-column="32" selection-end-line="239" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -149,8 +140,8 @@
       <file leaf-file-name="ZBlock.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Blocks/ZBlock.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="11" column="52" selection-start-line="11" selection-start-column="52" selection-end-line="11" selection-end-column="52" />
+            <state relative-caret-position="235">
+              <caret line="125" column="32" selection-start-line="125" selection-start-column="32" selection-end-line="125" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -292,9 +283,9 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="Scratches" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -728,8 +719,6 @@
           <caret line="105" column="0" selection-start-line="105" selection-start-column="0" selection-end-line="105" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#4352#4353#0" expanded="true" />
-            <element signature="e#4380#4381#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -826,8 +815,6 @@
           <caret line="105" column="0" selection-start-line="105" selection-start-column="0" selection-end-line="105" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#4352#4353#0" expanded="true" />
-            <element signature="e#4380#4381#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -985,28 +972,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Board.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="27" column="43" selection-start-line="27" selection-start-column="43" selection-end-line="27" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Blocks/NotEmptyBlock.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="814">
           <caret line="43" column="25" selection-start-line="43" selection-start-column="25" selection-end-line="43" selection-end-column="25" />
-          <folding>
-            <element signature="e#766#767#0" expanded="true" />
-            <element signature="e#799#800#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Blocks/Block.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
+        <state relative-caret-position="264">
           <caret line="12" column="32" selection-start-line="12" selection-start-column="32" selection-end-line="12" selection-end-column="32" />
           <folding>
             <element signature="e#1050#1051#0" expanded="true" />
@@ -1017,8 +992,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Blocks/JBlock.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="10" column="53" selection-start-line="10" selection-start-column="53" selection-end-line="10" selection-end-column="53" />
+        <state relative-caret-position="484">
+          <caret line="241" column="32" selection-start-line="241" selection-start-column="32" selection-end-line="241" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1027,8 +1002,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Blocks/LBlock.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="10" column="50" selection-start-line="10" selection-start-column="50" selection-end-line="10" selection-end-column="50" />
+        <state relative-caret-position="477">
+          <caret line="238" column="32" selection-start-line="238" selection-start-column="32" selection-end-line="238" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1037,8 +1012,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Blocks/OBlock.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="10" column="51" selection-start-line="10" selection-start-column="51" selection-end-line="10" selection-end-column="51" />
+        <state relative-caret-position="279">
+          <caret line="115" column="32" selection-start-line="115" selection-start-column="32" selection-end-line="115" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1047,20 +1022,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Blocks/SBlock.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="10" column="52" selection-start-line="10" selection-start-column="52" selection-end-line="10" selection-end-column="52" />
+        <state relative-caret-position="323">
+          <caret line="157" column="32" selection-start-line="157" selection-start-column="32" selection-end-line="157" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#4352#4353#0" expanded="true" />
-            <element signature="e#4380#4381#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Blocks/TBlock.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="11" column="52" selection-start-line="11" selection-start-column="52" selection-end-line="11" selection-end-column="52" />
+        <state relative-caret-position="440">
+          <caret line="239" column="32" selection-start-line="239" selection-start-column="32" selection-end-line="239" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1069,8 +1042,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Blocks/ZBlock.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="11" column="52" selection-start-line="11" selection-start-column="52" selection-end-line="11" selection-end-column="52" />
+        <state relative-caret-position="235">
+          <caret line="125" column="32" selection-start-line="125" selection-start-column="32" selection-end-line="125" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1079,20 +1052,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Blocks/IBlock.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="10" column="49" selection-start-line="10" selection-start-column="49" selection-end-line="10" selection-end-column="49" />
+        <state relative-caret-position="433">
+          <caret line="270" column="54" selection-start-line="270" selection-start-column="54" selection-end-line="270" selection-end-column="54" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#9218#9219#0" expanded="true" />
-            <element signature="e#9246#9247#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Board.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="484">
+          <caret line="27" column="43" selection-start-line="27" selection-start-column="43" selection-end-line="27" selection-end-column="43" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/GamePanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1423">
-          <caret line="322" column="18" selection-start-line="322" selection-start-column="18" selection-end-line="322" selection-end-column="18" />
+        <state relative-caret-position="389">
+          <caret line="297" column="37" selection-start-line="297" selection-start-column="37" selection-end-line="297" selection-end-column="37" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
