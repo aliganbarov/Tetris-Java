@@ -13,9 +13,8 @@ import java.util.Random;
 /**
  * Created by AliPC on 18-Dec-16.
  */
-public class GamePanel extends JPanel implements ActionListener, KeyListener {
-    private int normalSpeed = 500;
-    Timer t = new Timer(normalSpeed, this);
+public class NormalMode extends JPanel implements ActionListener, KeyListener {
+    Timer t = new Timer(1000 / Settings.FPS, this);
     private double velX = 0;
     private double velY = 20;
     private Block newBlock = new IBlock();
@@ -27,13 +26,14 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
     protected double height = 400;
     private int blockSize = 20;
 
-    public GamePanel() {
+    public NormalMode() {
         t.start();
         addKeyListener(this);
         setFocusable(true);
         setVisible(true);
         setFocusTraversalKeysEnabled(false);
         existingBlocks = new Block[blockSize * 20][blockSize * 10];
+        setBackground(new Color(255, 255, 255));
 
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
@@ -49,6 +49,12 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D)g;
 
+        //temporary learning stuff
+        /*
+        Font s = new Font("SansSerif", Font.BOLD, 30);
+        setFont(s);
+        g2.drawString("GAME OVER!", 5, 200);
+        */
 
         Color []color = newBlock.getColor();
         xDimensions = newBlock.getxDimensions();
@@ -64,12 +70,13 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
                 if (existingBlocks[i][j].getClass() != (new EmptyBlock()).getClass()) {
-                    g2.setColor(existingBlocks[i][j].getColor()[0]);
+                    //g2.setColor(Color.BLACK);
+                    //g2.draw(new Rectangle2D.Double(i * 20, j * 20, 20, 20));
+                    g2.setColor(existingBlocks[i][j].getColor()[0]);        //or setPaint
                     g2.fill(new Rectangle2D.Double(i * 20, j * 20, 20, 20));
                 }
             }
         }
-
     }
 
     public void actionPerformed(ActionEvent e) {
@@ -282,12 +289,14 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
     public void keyPressed(KeyEvent e) {
         int code = e.getKeyCode();
         if (code == KeyEvent.VK_E) {
+            t.setDelay((1000 / Settings.FPS) /10);
             newBlock.rotateRight();
             if (checkOverlap()) {
                 newBlock.rotateLeft();
             }
         }
         if (code == KeyEvent.VK_Q) {
+            t.setDelay((1000 / Settings.FPS) /10);
             newBlock.rotateLeft();
             if (checkOverlap()) {
                 newBlock.rotateRight();
@@ -295,7 +304,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         }
         if (code == KeyEvent.VK_S) {
             //accelerate
-            t.setDelay(normalSpeed/10);
+            t.setDelay((1000 / Settings.FPS) /10);
         }
         if (code == KeyEvent.VK_D) {
             right();
@@ -310,7 +319,13 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         int code = e.getKeyCode();
         if (code == KeyEvent.VK_S) {
             //decelerate
-            t.setDelay(normalSpeed);
+            t.setDelay(1000 / Settings.FPS);
+        }
+        if (code == KeyEvent.VK_E) {
+            t.setDelay(1000 / Settings.FPS);
+        }
+        if (code == KeyEvent.VK_Q) {
+            t.setDelay(1000 / Settings.FPS);
         }
     }
 }
