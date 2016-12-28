@@ -81,7 +81,7 @@ public class JBlock extends Block {
 
     @Override
     public void rotateRight() {
-        System.out.println("Rotate from " + atRotateStage + " to " + (atRotateStage + 1));
+        //System.out.println("Rotate from " + atRotateStage + " to " + (atRotateStage + 1));
         if (atRotateStage == 1) {
             rotateToStage2();
         }
@@ -98,7 +98,7 @@ public class JBlock extends Block {
 
     @Override
     public void rotateLeft() {
-        System.out.println("Rotate from " + atRotateStage + " to " + (atRotateStage - 1));
+        //System.out.println("Rotate from " + atRotateStage + " to " + (atRotateStage - 1));
         if (atRotateStage == 1) {
             rotateToStage4();
         }
@@ -225,11 +225,11 @@ public class JBlock extends Block {
         //System.out.println("J block out of border");
         for (int i = 0; i < numberOfSquares; i++) {
             if (xDimensions[i] < 0 || xDimensions[i] > (width - blockSize)) {
-                System.out.println("J block X is out of border, x[" + i + "]: " + xDimensions[i]);
+                //System.out.println("J block X is out of border, x[" + i + "]: " + xDimensions[i]);
                 return true;
             }
             if (yDimensions[i] < 0 || yDimensions[i] > (height - blockSize)) {
-                System.out.println("J block Y is out of border, y: " + yDimensions[i]);
+                //System.out.println("J block Y is out of border, y: " + yDimensions[i]);
                 return true;
             }
         }

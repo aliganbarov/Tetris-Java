@@ -28,7 +28,6 @@ public class Menu extends Application{
         Button exitBtn = new Button("Exit");
 
         newGameBtn.setMaxWidth(Settings.BUTTON_WIDTH);
-        //gameModeBtn.setMaxWidth(Settings.BUTTON_WIDTH);
         newUserBtn.setMaxWidth(Settings.BUTTON_WIDTH);
         topScoresBtn.setMaxWidth(Settings.BUTTON_WIDTH);
         exitBtn.setMaxWidth(Settings.BUTTON_WIDTH);

@@ -16,7 +16,7 @@ import java.util.Random;
 public class NormalMode extends JPanel implements ActionListener, KeyListener {
     Timer t = new Timer(1000 / Settings.FPS, this);
     private double velX = 0;
-    private double velY = 20;
+    private double velY = 0;
     private Block newBlock = new IBlock();
     private Block[][] existingBlocks;
     private double xDimensions[] = {0, 0, 0, 0, 0, 0, 0};
@@ -25,6 +25,14 @@ public class NormalMode extends JPanel implements ActionListener, KeyListener {
     protected double width = 200;
     protected double height = 400;
     private int blockSize = 20;
+    private boolean isStarted;
+
+    private int currentScore;
+    private FullRowListener fullRowListener;
+
+    private int nextBlock = 0;
+    private NextBlockListener nextBlockListener;
+
 
     public NormalMode() {
         t.start();
@@ -43,18 +51,23 @@ public class NormalMode extends JPanel implements ActionListener, KeyListener {
         //setBorder(BorderFactory.createLineBorder(Color.black));
         Border border = BorderFactory.createLineBorder(new Color(0, 0, 0));
         setBorder(border);
+
+        currentScore = 0;
     }
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D)g;
 
-        //temporary learning stuff
-        /*
-        Font s = new Font("SansSerif", Font.BOLD, 30);
-        setFont(s);
-        g2.drawString("GAME OVER!", 5, 200);
-        */
+
+        // write text if game not started
+        if (!isStarted) {
+            Font s = new Font("SansSerif", Font.BOLD, 12);
+            setFont(s);
+            g2.drawString("Press S to START!", 50, 200);
+        }
+
+
 
         Color []color = newBlock.getColor();
         xDimensions = newBlock.getxDimensions();
@@ -235,11 +248,15 @@ public class NormalMode extends JPanel implements ActionListener, KeyListener {
         for (int j = 0; j < width / 20; j++) {
             existingBlocks[j][i] = new EmptyBlock();
         }
+        currentScore++;
+        if (fullRowListener != null) {
+            fullRowListener.currentScore(currentScore);
+        }
         moveOneLineDown(i);
+
     }
 
     public void moveOneLineDown(int emptyRow) {
-        System.out.println("Empty Row: " + emptyRow);
         for (int j = emptyRow; j > 0; j--){
             for (int i = 0; i < 20; i++) {
                 existingBlocks[i][j] = existingBlocks[i][j - 1];
@@ -259,7 +276,12 @@ public class NormalMode extends JPanel implements ActionListener, KeyListener {
 
     public Block setNewBlock() {
         Random r = new Random();
-        int op = r.nextInt(7);
+        //int op = r.nextInt(7);
+        int op = nextBlock;
+        nextBlock = r.nextInt(7);
+        if (nextBlockListener != null) {
+            nextBlockListener.nextBlock(nextBlock);
+        }
         //System.out.println(op);
         //return new ZBlock();
 
@@ -304,6 +326,8 @@ public class NormalMode extends JPanel implements ActionListener, KeyListener {
         }
         if (code == KeyEvent.VK_S) {
             //accelerate
+            velY = 20;
+            isStarted = true;
             t.setDelay((1000 / Settings.FPS) /10);
         }
         if (code == KeyEvent.VK_D) {
@@ -327,5 +351,13 @@ public class NormalMode extends JPanel implements ActionListener, KeyListener {
         if (code == KeyEvent.VK_Q) {
             t.setDelay(1000 / Settings.FPS);
         }
+    }
+
+    public void setFullRowListener(FullRowListener listener) {
+        this.fullRowListener = listener;
+    }
+
+    public void setNextBlockListener(NextBlockListener listener) {
+        this.nextBlockListener = listener;
     }
 }
