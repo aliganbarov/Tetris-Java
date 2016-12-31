@@ -1,9 +1,12 @@
-package Views;
+package Controllers;
 
 import GameModes.*;
 import Listeners.FullRowListener;
+import Listeners.GameOverListener;
 import Listeners.MenuBtnListener;
 import Listeners.NextBlockListener;
+import Models.FileManager;
+import Views.GameStatisticsPanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,6 +19,8 @@ public class Board extends JPanel{
     private GameMode gp;
     private GameStatisticsPanel gs;
 
+    private FileManager fileManager;
+
     private MenuBtnListener bMenuBtnListener;
 
     public Board(char gameMode) {
@@ -25,7 +30,19 @@ public class Board extends JPanel{
     }
 
     public void InitBoard() {
-        gs = new GameStatisticsPanel();
+        fileManager = new FileManager();
+
+        switch (gameMode) {
+            case 'n':
+                gs = new GameStatisticsPanel(gameMode, fileManager.getNormalScore());
+                break;
+            case 'c':
+                gs = new GameStatisticsPanel(gameMode, fileManager.getCasualScore());
+                break;
+            case 'm':
+                gs = new GameStatisticsPanel(gameMode, fileManager.getMadnessScore());
+                break;
+        }
 
         //Create instance of game
         if (gameMode != 'e') {
@@ -54,15 +71,30 @@ public class Board extends JPanel{
                     gs.drawNextBlock(nextBlock);
                 }
             });
+            gp.setGameOverListener(new GameOverListener() {
+                @Override
+                public void saveMaxScore(char gameMode) {
+                    int maxScore = gs.getMaxScore();
+                    fileManager.newRecord(maxScore, gameMode);
+                }
+            });
+
         }
 
-        gs = new GameStatisticsPanel();
+        //gs = new GameStatisticsPanel();
         gs.setMenuBtnListener(new MenuBtnListener() {
             @Override
             public void backToMenu() {
                 if (bMenuBtnListener != null) {
                     bMenuBtnListener.backToMenu();
                 }
+            }
+        });
+        gs.setGameOverListener(new GameOverListener() {
+            @Override
+            public void saveMaxScore(char gameMode) {
+                int maxScore = gs.getMaxScore();
+                fileManager.newRecord(maxScore, gameMode);
             }
         });
 

@@ -19,4 +19,6 @@ public class GameSettings {
     public static int BTN_HEIGHT = 30;
     public static int BTN_WIDTH = 120;
 
+    public static String fileName = "out/production/Tetris/Files/scores.txt";
+
 }

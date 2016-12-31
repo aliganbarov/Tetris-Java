@@ -1,6 +1,7 @@
 package Views;
 
 import General.GameSettings;
+import Listeners.HighScoresListener;
 import Listeners.NewGameListener;
 
 import javax.swing.*;
@@ -17,6 +18,8 @@ public class MenuPanel extends JPanel{
     private JPanel btnHolder;
 
     private NewGameListener newGameListener;
+
+    private HighScoresListener highScoresListener;
 
     public MenuPanel() {
         Dimension dim = getPreferredSize();
@@ -42,6 +45,12 @@ public class MenuPanel extends JPanel{
             }
         });
 
+        stasBtn.addActionListener( e -> {
+            if (highScoresListener != null) {
+                highScoresListener.highScoresWindow();
+            }
+        });
+
         exitBtn.addActionListener(e -> System.exit(0));
 
         setLayout(new GridBagLayout());
@@ -64,7 +73,7 @@ public class MenuPanel extends JPanel{
         gc.gridy = 2;
         btnHolder.add(exitBtn, gc);
 
-        //Fill Views.MenuPanel
+        //Fill MenuPanel
         gc.gridx = 0;
         gc.gridy = 0;
         add(title, gc);
@@ -78,6 +87,10 @@ public class MenuPanel extends JPanel{
 
     public void setNewGameListener(NewGameListener listener) {
         this.newGameListener = listener;
+    }
+
+    public void setHighScoresListener(HighScoresListener highScoresListener) {
+        this.highScoresListener = highScoresListener;
     }
 }
 

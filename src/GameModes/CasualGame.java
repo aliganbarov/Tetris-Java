@@ -1,5 +1,7 @@
 package GameModes;
 
+import Listeners.GameOverListener;
+
 /**
  * Created by AliPC on 30-Dec-16.
  */
@@ -18,5 +20,9 @@ public class CasualGame extends GameMode {
             }
 
         }
+    }
+
+    public void setGameOverListener(GameOverListener gameOverListener) {
+        this.gameOverListener = gameOverListener;
     }
 }

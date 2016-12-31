@@ -2,23 +2,21 @@ package GameModes;
 
 import General.GameSettings;
 import Listeners.FullRowListener;
+import Listeners.GameOverListener;
 import Listeners.NextBlockListener;
 import Models.Blocks.*;
 
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import java.awt.event.*;
 import java.awt.geom.Rectangle2D;
 import java.util.Random;
 
 /**
  * Created by AliPC on 18-Dec-16.
  */
-public class GameMode extends JPanel implements ActionListener, KeyListener {
+public abstract class GameMode extends JPanel implements ActionListener, KeyListener {
     protected Timer t = new Timer(1000 / GameSettings.FPS, this);
     //protected Timer t = new Timer(1000, this);
     private double velX = 0;
@@ -33,6 +31,8 @@ public class GameMode extends JPanel implements ActionListener, KeyListener {
     private int blockSize = 20;
     private boolean isStarted;
     protected boolean gameOver;
+
+    protected GameOverListener gameOverListener;
 
     protected int currentScore;
     private FullRowListener fullRowListener;
@@ -360,4 +360,6 @@ public class GameMode extends JPanel implements ActionListener, KeyListener {
     public void setNextBlockListener(NextBlockListener listener) {
         this.nextBlockListener = listener;
     }
+
+    public abstract void setGameOverListener(GameOverListener gameOverListener);
 }

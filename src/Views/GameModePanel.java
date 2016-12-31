@@ -2,6 +2,7 @@ package Views;
 
 import General.GameSettings;
 import Listeners.CasualModeListener;
+import Listeners.MenuBtnListener;
 import Listeners.NormalModeListener;
 
 import javax.swing.*;
@@ -17,10 +18,12 @@ public class GameModePanel extends JPanel{
     private JButton normalBtn;
     private JButton casualBtn;
     private JButton madnessBtn;
+    private JButton menuBtn;
     private JPanel btnHolder;
 
     private NormalModeListener normalModeListener;
     private CasualModeListener casualModeListener;
+    private MenuBtnListener menuBtnListener;
 
     public GameModePanel(JFrame frame) {
         this.frame = frame;
@@ -30,12 +33,14 @@ public class GameModePanel extends JPanel{
         normalBtn = new JButton("Normal");
         casualBtn = new JButton("Casual");
         madnessBtn = new JButton("Madness");
+        menuBtn = new JButton("Back");
         btnHolder = new JPanel(new GridBagLayout());
 
         title.setFont(new Font("Helvetica", Font.BOLD, 50));
         normalBtn.setPreferredSize(new Dimension(GameSettings.BTN_WIDTH, GameSettings.BTN_HEIGHT));
         casualBtn.setPreferredSize(new Dimension(GameSettings.BTN_WIDTH, GameSettings.BTN_HEIGHT));
         madnessBtn.setPreferredSize(new Dimension(GameSettings.BTN_WIDTH, GameSettings.BTN_HEIGHT));
+        menuBtn.setPreferredSize(new Dimension(GameSettings.BTN_WIDTH, GameSettings.BTN_HEIGHT));
 
         //listeners
         normalBtn.addActionListener(e -> {
@@ -46,6 +51,11 @@ public class GameModePanel extends JPanel{
         casualBtn.addActionListener(e -> {
             if (casualModeListener != null) {
                 casualModeListener.newCasualMode();
+            }
+        });
+        menuBtn.addActionListener(e -> {
+            if (menuBtnListener != null) {
+                menuBtnListener.backToMenu();
             }
         });
 
@@ -68,6 +78,10 @@ public class GameModePanel extends JPanel{
 
         gc.gridy = 2;
         btnHolder.add(madnessBtn, gc);
+
+        gc.insets = new Insets(20, 5, 5, 5);
+        gc.gridy = 3;
+        btnHolder.add(menuBtn, gc);
 
         //Fill Views.GameModePanel
         gc.gridx = 0;
@@ -95,5 +109,9 @@ public class GameModePanel extends JPanel{
 
     public void setCasualModeListener(CasualModeListener listener) {
         this.casualModeListener = listener;
+    }
+
+    public void setMenuBtnListener(MenuBtnListener menuBtnListener) {
+        this.menuBtnListener = menuBtnListener;
     }
 }

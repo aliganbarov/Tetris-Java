@@ -1,12 +1,10 @@
 package Controllers;
 
-import GameModes.GameMode;
 import General.GameSettings;
 import Listeners.*;
-import Views.Board;
-import Views.GameModePanel;
-import Views.GameStatisticsPanel;
-import Views.MenuPanel;
+import Models.FileManager;
+import Models.HighScores;
+import Views.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -23,12 +21,7 @@ public class Menu {
 
     private Board board;
 
-    private GameMode gameMode;
-    private JPanel gmHolder;
-
-    private GameStatisticsPanel gameStatisticsPanel;
-    private JPanel gspHolder;
-    private JPanel gamePanel;
+    private HighScoresPanel highScoresPanel;
 
     public Menu() {
         frame.setLayout(new BorderLayout());
@@ -37,11 +30,6 @@ public class Menu {
 
         frame.setFocusable(true);
         frame.requestFocusInWindow();
-
-        gmHolder = new JPanel(new BorderLayout());
-        gspHolder = new JPanel(new BorderLayout());
-        gamePanel = new JPanel(new BorderLayout());
-
 
         //register NewGameListener to menuPanel
         menuPanel.setNewGameListener(new NewGameListener() {
@@ -96,16 +84,40 @@ public class Menu {
                     }
                 });
 
+                //register back to MenuBtnListener
+                gameModePanel.setMenuBtnListener(new MenuBtnListener() {
+                    @Override
+                    public void backToMenu() {
+                        ClearFrame();
+                        frame.add(menuPanel);
+                        UpdateFrame();
+                    }
+                });
 
 
             }
         });
 
+        //Register HighScoresListener
+        menuPanel.setHighScoresListener(new HighScoresListener() {
+            @Override
+            public void highScoresWindow() {
+                ClearFrame();
+                highScoresPanel = new HighScoresPanel();
+                highScoresPanel.setMenuBtnListener(new MenuBtnListener() {
+                    @Override
+                    public void backToMenu() {
+                        ClearFrame();
+                        frame.add(menuPanel);
+                        UpdateFrame();
+                    }
+                });
+                frame.add(highScoresPanel);
+                UpdateFrame();
+            }
+        });
+
         frame.add(menuPanel, BorderLayout.CENTER);
-
-
-
-
 
         frame.setSize(GameSettings.MENU_WIDTH, GameSettings.MENU_HEIGHT);
         frame.setLocationRelativeTo(null);

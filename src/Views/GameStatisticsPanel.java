@@ -1,5 +1,7 @@
 package Views;
 
+import General.GameSettings;
+import Listeners.GameOverListener;
 import Listeners.MenuBtnListener;
 
 import javax.swing.*;
@@ -11,6 +13,7 @@ import java.awt.*;
 public class GameStatisticsPanel extends JPanel {
     private int maxScore = 0;
     private int currentScore = 0;
+    private char gameMode;
 
     private JPanel scorePanel;
     private JLabel nextBlockLabel;
@@ -29,8 +32,11 @@ public class GameStatisticsPanel extends JPanel {
     private JButton backBtn;
 
     private MenuBtnListener menuBtnListener;
+    private GameOverListener gameOverListener;
 
-    public GameStatisticsPanel() {
+    public GameStatisticsPanel(char gameMode, int maxScore) {
+        this.gameMode = gameMode;
+        this.maxScore = maxScore;
         GridBagConstraints gc = new GridBagConstraints();
         gc.fill = GridBagConstraints.NONE;
         gc.weighty = 1;
@@ -93,8 +99,12 @@ public class GameStatisticsPanel extends JPanel {
         controlsPanel.add(sLabel, gc);
 
         //set btn panel
-        backBtn = new JButton("Menu");
+        backBtn = new JButton("Back");
+        backBtn.setPreferredSize(new Dimension(GameSettings.BTN_WIDTH, GameSettings.BTN_HEIGHT));
         backBtn.addActionListener(e -> {
+            if (gameOverListener != null) {
+                gameOverListener.saveMaxScore(gameMode);
+            }
             if (menuBtnListener != null) {
                 menuBtnListener.backToMenu();
             }
@@ -160,5 +170,13 @@ public class GameStatisticsPanel extends JPanel {
 
     public void setMenuBtnListener(MenuBtnListener menuBtnListener) {
         this.menuBtnListener = menuBtnListener;
+    }
+
+    public void setGameOverListener(GameOverListener gameOverListener) {
+        this.gameOverListener = gameOverListener;
+    }
+
+    public int getMaxScore() {
+        return maxScore;
     }
 }
